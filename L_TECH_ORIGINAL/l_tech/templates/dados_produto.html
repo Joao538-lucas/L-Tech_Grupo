@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=100">
+</head>
+
+<body class="dados-produto-body">
+    {% include 'sidebar.html' %}
+
+<div class="dados-produto-container">
+
+    
+    <main class="dados-produto-conteudo">
+
+        <h1>Lista de Produtos</h1>
+
+        <table border="1" cellpadding="10" style="background:white;color:black;width:100%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Limite Máximo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for p in produtos %}
+                <tr>
+                    <td>{{ p.idproduto }}</td>
+                    <td>{{ p.nome }}</td>
+                    <td>{{ p.preco }}</td>
+                    <td>{{ p.estoqueatual }}</td>
+                    <td>{{ p.limite_maximo }}</td>
+
+                    <td>
+                        <a href="/produto/editar/{{ p.idproduto }}">Editar</a>
+
+                        <a href="/produto/deletar/{{ p.idproduto }}"
+                           onclick="return confirm('Tem certeza que deseja excluir?')">
+                           Excluir
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

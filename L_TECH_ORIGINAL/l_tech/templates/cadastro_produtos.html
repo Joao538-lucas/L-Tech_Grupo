@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto - L-Tech</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="produto-body">
+    {% include 'sidebar.html' %}
+
+<div class="produto-container">
+
+   
+
+    <main class="produto-conteudo">
+
+        <div class="produto-topo">
+
+            <h1>Cadastro de Produto</h1>
+
+            <div class="produto-botoes">
+
+                <a href="/dados-produto">
+                    <button type="button">Cancelar</button>
+                </a>
+
+                <button type="submit" form="form-produto">
+                    Salvar Produto
+                </button>
+
+            </div>
+
+        </div>
+
+        <form id="form-produto" action="/produto/salvar" method="POST">
+
+            <div class="campo-nome-produto">
+                <label>Nome do Produto</label>
+                <input type="text" name="nome_produto" required>
+            </div>
+
+            <div class="produto-area-form">
+
+                <div class="foto-produto">
+                    <span>FOTO</span>
+                </div>
+
+                <div class="campos-produto">
+
+                    <div class="campo-produto">
+                        <label>Código</label>
+                        <input type="text" name="codigo">
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Tipo</label>
+                        <select name="tipo">
+                            <option value="">Selecione</option>
+                            <option value="Alimento">Alimento</option>
+                            <option value="Bebida">Bebida</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Eletrodoméstico">Eletrodoméstico</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Preço de Venda</label>
+                        <input type="text" name="preco">
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Data de Validade</label>
+                        <input type="date" name="validade">
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Limite Máximo de Estoque</label>
+                        <input type="number" name="limite_maximo" min="1" required>
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Unidade</label>
+                        <input type="text" name="unidade">
+                    </div>
+
+                    <div class="campo-produto">
+                        <label>Departamento</label>
+                        <select name="departamento">
+                            <option value="">Selecione</option>
+                            <option value="Estoque">Estoque</option>
+                            <option value="Vendas">Vendas</option>
+                            <option value="Compras">Compras</option>
+                            <option value="Logística">Logística</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

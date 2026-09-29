@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionário - Ajuda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="questionario-body">
+
+    <div class="questionario-card">
+        <div class="mini-logo">L-TECH</div>
+
+        <h1>Como a L-Tech pode ajudar a sua equipe?</h1>
+        <p>Opções para seu projeto de Gerenciamento de estoque</p>
+
+        <form action="/ajuda" method="POST">
+
+            <div class="opcoes-grid ajuda-grid">
+                <label><input type="checkbox" name="ajuda" value="Distribuição/Transporte"> <span>Distribuição/Transporte</span></label>
+                <label><input type="checkbox" name="ajuda" value="Expedição"> <span>Expedição</span></label>
+                <label><input type="checkbox" name="ajuda" value="Gestão da frota"> <span>Gestão da frota</span></label>
+                <label><input type="checkbox" name="ajuda" value="Gestão de fretes"> <span>Gestão de fretes</span></label>
+                <label><input type="checkbox" name="ajuda" value="Planejamento de compra de materiais"> <span>Planejamento de compra de materiais</span></label>
+                <label><input type="checkbox" name="ajuda" value="Atendimento de pedidos"> <span>Atendimento de pedidos</span></label>
+                <label><input type="checkbox" name="ajuda" value="Controle de estoque"> <span>Controle de estoque</span></label>
+                <label><input type="checkbox" name="ajuda" value="Importação/Exportação"> <span>Importação/Exportação</span></label>
+                <label><input type="checkbox" name="ajuda" value="Homologação de fornecedores"> <span>Homologação de fornecedores</span></label>
+                <label><input type="checkbox" name="ajuda" value="Outros"> <span>Outros</span></label>
+            </div>
+
+            <div class="rodape-questionario">
+                <div class="passos">
+                    <span></span>
+                    <span class="ativo"></span>
+                </div>
+
+                <button type="submit">Continuar</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

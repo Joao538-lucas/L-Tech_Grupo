@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar código - L-Tech</title>
+</head>
+
+<body>
+
+    <h1>Verificar código</h1>
+
+    <p>Digite o código enviado para seu e-mail:</p>
+
+    <form action="/verificar-codigo" method="POST">
+
+        <input
+            type="text"
+            name="codigo"
+            placeholder="Código de 6 dígitos"
+            maxlength="6"
+            required
+        >
+
+        <button type="submit">
+            Verificar
+        </button>
+
+    </form>
+
+</body>
+
+</html>

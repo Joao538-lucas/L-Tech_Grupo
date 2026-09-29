@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Fornecedor - L-Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=100">
+</head>
+
+<body class="fornecedor-body">
+    {% include 'sidebar.html' %}
+
+    <div class="fornecedor-container">
+
+
+       
+
+        <!-- CONTEÚDO -->
+        <main class="fornecedor-conteudo">
+
+            <div class="fornecedor-topo">
+                <h1>Cadastro de Fornecedor</h1>
+
+                <div class="fornecedor-botoes">
+
+                    <a href="/fornecedores">
+                        <button type="button">Cancelar</button>
+                    </a>
+
+                    <button type="submit" form="form-fornecedor">
+                        Salvar fornecedor
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO -->
+            <form id="form-fornecedor" method="POST" action="/fornecedor/salvar">
+
+                <div class="campo-nome-fornecedor">
+                    <label>Nome do fornecedor</label>
+                    <input type="text" name="nome_fornecedor" required>
+                </div>
+
+                <div class="fornecedor-area-form">
+
+                    <!-- LOGO -->
+                    <div class="logo-empresa-box">
+                        <span>LOGO</span>
+                    </div>
+
+                    <!-- CAMPOS -->
+                    <div class="campos-fornecedor">
+
+                        <div class="campo-fornecedor">
+                            <label>CNPJ</label>
+                            <input type="text" name="cnpj" required>
+                        </div>
+
+                        <div class="campo-fornecedor">
+                            <label>Telefone</label>
+                            <input type="text" name="telefone" required>
+                        </div>
+
+                        <div class="campo-fornecedor">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+
+                        <div class="campo-fornecedor">
+                            <label>Produto fornecido</label>
+                            <input type="text" name="produto_fornecido" required>
+                        </div>
+
+                        <div class="campo-fornecedor">
+                            <label>Endereço</label>
+                            <input type="text" name="endereco" required>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido de Saída - L-TECH</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=100">
+</head>
+
+<body class="produto-body">
+    {% include 'sidebar.html' %}
+
+<div class="produto-container">
+
+
+
+    <main class="produto-conteudo">
+
+        <div class="produto-topo">
+
+            <h1>📤 Pedido de Saída</h1>
+
+            <div class="produto-botoes">
+                <a href="/pedido_saida">
+                    <button type="button">
+                        Atualizar
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
+        <form action="/pedido_saida/criar" method="POST">
+
+            <div class="linha-campos">
+
+                <div class="campo-produto">
+                    <label>ID do Produto</label>
+                    <input
+                        type="number"
+                        name="produto"
+                        required
+                    >
+                </div>
+
+                <div class="campo-produto">
+                    <label>Quantidade</label>
+                    <input
+                        type="number"
+                        name="quantidade"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="linha-campos">
+
+                
+            </div>
+
+            <br>
+
+            <button type="submit">
+                Salvar Saída
+            </button>
+
+        </form>
+
+        <br><br>
+
+        <h2>Histórico</h2>
+
+        <table style="
+            width:100%;
+            background:white;
+            color:black;
+            border-collapse:collapse;
+        " border="1">
+
+            <tr>
+                <th>ID</th>
+                <th>Produto ID</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+            </tr>
+
+            {% for s in saidas %}
+            <tr>
+                <td>{{ s.idsaida }}</td>
+                <td>{{ s.produto }}</td>
+                <td>{{ s.quantidade }}</td>
+                <td>{{ s.data_saida }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

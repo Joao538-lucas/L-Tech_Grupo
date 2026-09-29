@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido de Entrada - L-Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=100">
+</head>
+
+<body class="painel-body">
+    {% include 'sidebar.html' %}
+
+<div class="painel-container">
+
+    
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo-painel">
+
+        <header class="topo-painel">
+            <h2>📦 Pedido de Entrada</h2>
+        </header>
+
+        <section class="area-dados">
+
+            <div class="tabela-card">
+
+                <form action="/pedido_entrada/criar" method="POST">
+
+                    <select name="produto" required>
+                        <option value="">Selecione o produto</option>
+
+                        {% for p in produtos %}
+                        <option value="{{ p.idproduto }}">
+                            {{ p.nome }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <input
+                        type="number"
+                        name="quantidade"
+                        placeholder="Quantidade"
+                        required
+                    >
+
+                    <button type="submit">
+                        Salvar
+                    </button>
+
+                </form>
+
+                <br>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for e in entradas %}
+                        <tr>
+                            <td>{{ e.identrada }}</td>
+                            <td>{{ e.nome_produto }}</td>
+                            <td>{{ e.quantidade }}</td>
+                            <td>{{ e.data_entrada }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

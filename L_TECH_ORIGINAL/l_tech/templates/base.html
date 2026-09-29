@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L-Tech</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    
+    <header>
+        <nav class="menu">
+
+            <div class="logo">
+                <img src="{{ url_for('static', filename='Design sem nome.png') }}" alt="Logo">
+            </div>
+
+            <ul class="links">
+                <li><a href="{{ url_for('base') }}">Início</a></li>
+                <li><a href="{{ url_for('base') }}">Sobre</a></li>
+                <li><a href="{{ url_for('base') }}">Planos</a></li>
+                <li><a href="{{ url_for('base') }}">Contato</a></li>
+            </ul>
+
+            <div class="botao-menu">
+                <a href="#">📞 Fale conosco</a>
+            </div>
+
+        </nav>
+    </header>
+
+    
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="mensagem {{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    
+    <footer class="footer">
+
+        <div class="logo-area">
+            <img src="{{ url_for('static', filename='Design sem nome.png') }}" alt="">
+        </div>
+
+        <div class="footer-container">
+
+            
+            <div class="footer-col">
+                <h2>Contato</h2>
+                <p>(19) 1234-5678</p>
+                <p>contato@ltech.com.br</p>
+            </div>
+
+            
+            <div class="footer-col">
+                <h2>Institucional</h2>
+                <ul>
+                    <li><a href="{{ url_for('base') }}">Home</a></li>
+                    <li><a href="{{ url_for('base') }}">Sobre</a></li>
+                    <li><a href="{{ url_for('base') }}">Planos</a></li>
+                </ul>
+            </div>
+
+        
+            <div class="footer-col">
+                <h2>Onde nos encontrar</h2>
+
+                <div class="social">
+                    <img src="{{ url_for('static', filename='image.png') }}" class="img-pequena">
+                    <img src="{{ url_for('static', filename='image (1).png') }}" class="img-pequena">
+                    <img src="{{ url_for('static', filename='link.png') }}" class="img-pequena">
+                    <img src="{{ url_for('static', filename='Design sem nome (1).png') }}" class="img-pequena">
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

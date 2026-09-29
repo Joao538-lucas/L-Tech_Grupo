@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Estoque</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="estoque-body">
+
+<div class="estoque-container">
+
+    
+    <!-- CONTEÚDO -->
+    <main class="estoque-conteudo">
+
+        <h1>📦 Estoque de Produtos</h1>
+
+        <table class="estoque-tabela">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Estoque Atual</th>
+                    <th>Limite Máximo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for p in produtos %}
+                <tr>
+                    <td>{{ p.idproduto }}</td>
+                    <td>{{ p.nome }}</td>
+                    <td>
+                        {% if p.estoqueatual <= 5 %}
+                            <span style="color:red; font-weight:bold;">
+                                {{ p.estoqueatual }}
+                            </span>
+                        {% else %}
+                            {{ p.estoqueatual }}
+                        {% endif %}
+                    </td>
+                    <td>{{ p.limite_maximo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

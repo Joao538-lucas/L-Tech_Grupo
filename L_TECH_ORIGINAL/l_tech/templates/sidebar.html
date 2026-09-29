@@ -1,0 +1,64 @@
+<aside class="sidebar-clientes">
+
+    <div class="sidebar-logo">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="L-Tech">
+        <span>L-TECH</span>
+    </div>
+    
+    <nav class="sidebar-nav">
+    
+        <a href="/painel" class="{% if request.path == '/painel' %}ativo{% endif %}">
+            <span>⌂</span>
+            <span>Painel</span>
+        </a>
+    
+        <a href="/agenda" class="{% if request.path == '/agenda' %}ativo{% endif %}">
+            <span>▣</span>
+            <span>Agenda</span>
+        </a>
+    
+        <a href="/cadastro-produtos" class="{% if request.path == '/cadastro-produtos' %}ativo{% endif %}">
+            <span>＋</span>
+            <span>Cadastro de Produtos</span>
+        </a>
+    
+        <a href="/cadastro-fornecedor" class="{% if request.path == '/cadastro-fornecedor' %}ativo{% endif %}">
+            <span>♙</span>
+            <span>Cadastro de Fornecedor</span>
+        </a>
+    
+        <a href="/clientes" class="{% if request.path == '/clientes' %}ativo{% endif %}">
+            <span>♙</span>
+            <span>Clientes</span>
+        </a>
+    
+        <a href="/dados-produto" class="{% if request.path == '/dados-produto' %}ativo{% endif %}">
+            <span>▤</span>
+            <span>Dados de Produto</span>
+        </a>
+    
+        <a href="/fornecedores" class="{% if request.path == '/fornecedores' %}ativo{% endif %}">
+            <span>♙</span>
+            <span>Fornecedores</span>
+        </a>
+    
+        <a href="/relatorios" class="{% if request.path == '/relatorios' %}ativo{% endif %}">
+            <span>▥</span>
+            <span>Relatórios</span>
+        </a>
+    
+        <a href="/pedido_saida" class="{% if request.path == '/pedido_saida' %}ativo{% endif %}">
+            <span>↗</span>
+            <span>Pedido de Saída</span>
+        </a>
+    
+        <a href="/pedido_entrada" class="{% if request.path == '/pedido_entrada' %}ativo{% endif %}">
+            <span>↙</span>
+            <span>Pedido de Entrada</span>
+        </a>
+    
+    </nav>
+    
+    
+    </aside>
+    

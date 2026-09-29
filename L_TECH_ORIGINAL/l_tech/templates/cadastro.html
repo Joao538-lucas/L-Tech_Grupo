@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - L-Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="cadastro-body">
+
+    <div class="cadastro-container">
+
+        <div class="cadastro-card">
+
+            <h1>Crie sua conta</h1>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    {% for mensagem in mensagens %}
+                        <div class="mensagem">
+                            {{ mensagem }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="/cadastro" method="POST">
+
+                <input
+                    type="text"
+                    name="nome"
+                    placeholder="Nome completo:"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Insira seu email:"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Insira sua senha:"
+                    minlength="8"
+                    required
+                >
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+            <div class="divisor">
+            </div>
+
+            <div class="login-social">
+            </div>
+
+            <p class="voltar-login">
+                Já tem uma conta?
+                <a href="/">Fazer login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

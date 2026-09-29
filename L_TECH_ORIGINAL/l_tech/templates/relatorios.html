@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatórios - L-Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=700">
+</head>
+
+<body class="relatorios-body">
+    {% include 'sidebar.html' %}
+
+<div class="relatorios-container">
+
+
+    <!-- CONTEÚDO -->
+    <main class="relatorios-conteudo">
+
+        <!-- TÍTULO -->
+        <h1>📊 Relatórios</h1>
+
+        <!-- CARDS -->
+        <div style="display:flex; gap:20px; margin:20px 0;">
+
+            <div style="background:#123983; padding:20px; border-radius:12px; color:white;">
+                <h3>Clientes</h3>
+                <p style="font-size:24px;">
+                    {{ clientes.total_clientes }}
+                </p>
+            </div>
+
+            <div style="background:#123983; padding:20px; border-radius:12px; color:white;">
+                <h3>Produtos</h3>
+                <p style="font-size:24px;">
+                    {{ produtos.total_produtos }}
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ESTOQUE BAIXO -->
+        <section style="margin-top:30px;">
+            <h2>⚠ Estoque baixo</h2>
+
+            <ul>
+                {% for p in estoque_baixo %}
+                    <li>{{ p.nome }} - {{ p.estoqueatual }} unidades</li>
+                {% else %}
+                    <li>Sem produtos com estoque baixo</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- ÚLTIMOS PRODUTOS -->
+        <section style="margin-top:30px;">
+            <h2>🆕 Últimos produtos</h2>
+
+            <table border="1" cellpadding="10" style="width:100%; margin-top:10px;">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for p in ultimos_produtos %}
+                    <tr>
+                        <td>{{ p.nome }}</td>
+                        <td>{{ p.preco }}</td>
+                        <td>{{ p.estoqueatual }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

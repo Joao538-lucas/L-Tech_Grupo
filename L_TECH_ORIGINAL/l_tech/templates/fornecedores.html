@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fornecedores - L-Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="fornecedor-body">
+    {% include 'sidebar.html' %}
+
+<div class="fornecedor-container">
+
+
+    <!-- CONTEÚDO -->
+    <main class="fornecedor-conteudo">
+
+        <div class="fornecedor-topo">
+            <h1>Fornecedores Cadastrados</h1>
+
+            <div class="fornecedor-botoes">
+                <a href="/cadastro-fornecedor">
+                    <button type="button">Novo fornecedor</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- TABELA -->
+        <div style="overflow-x:auto; margin-top: 30px;">
+
+            <table style="width:100%; border-collapse: collapse; color: white;">
+                <thead>
+                    <tr style="background:#123983;">
+                        <th style="padding:10px;">Nome</th>
+                        <th>CNPJ</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Produto</th>
+                        <th>Endereço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for f in fornecedores %}
+                    <tr style="text-align:center; background: rgba(255, 255, 255, 0.1);">
+                        <td style="padding:10px;">{{ f.nome_fornecedor }}</td>
+                        <td>{{ f.cnpj }}</td>
+                        <td>{{ f.telefone }}</td>
+                        <td>{{ f.email }}</td>
+                        <td>{{ f.produto_fornecido }}</td>
+                        <td>{{ f.endereco }}</td>
+
+                        <td>
+                            <a href="/fornecedor/editar/{{ f.idfornecedor }}">
+                                <button style="background:#85c4ff; border:none; padding:6px 10px; border-radius:10px;">
+                                    Editar
+                                </button>
+                            </a>
+
+                            <a href="/fornecedor/deletar/{{ f.idfornecedor }}"
+                               onclick="return confirm('Deseja excluir este fornecedor?')">
+                                <button style="background:red; border:none; padding:6px 10px; border-radius:10px;">
+                                    Excluir
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - L-TECH</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=104">
+</head>
+
+<body class="painel-body">
+    {% include 'sidebar.html' %}
+
+    <div class="painel-container">
+
+
+
+        <main class="conteudo-painel">
+
+            <div class="topo-painel">
+
+                <input
+                    type="search"
+                    id="pesquisa"
+                    placeholder="Pesquisar..."
+                >
+
+                <div class="icones-topo">
+
+                    <button type="button">
+                        ⚙️
+                    </button>
+
+                    <div class="perfil-container">
+
+                        <button
+                            type="button"
+                            class="perfil-btn"
+                            id="notificacaoBtn"
+                        >
+                            🔔
+                            <small id="notificacaoContador">0</small>
+                        </button>
+
+                        <div
+                            class="perfil-menu"
+                            id="notificacaoMenu"
+                        >
+
+                            <div class="perfil-cabecalho">
+
+                                <div class="perfil-dados">
+                                    <a href="#" id="tituloNotificacoes">
+                                        Notificações
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="perfil-linha"></div>
+
+                            <div id="notificacaoLista">
+                                <a href="#" id="semNotificacao">
+                                    Nenhuma notificação.
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="perfil-container">
+
+                        <button
+                            type="button"
+                            class="perfil-btn"
+                            id="perfilBtn"
+                        >
+                            👤
+                        </button>
+
+                        <div
+                            class="perfil-menu"
+                            id="perfilMenu"
+                        >
+
+                            <div class="perfil-cabecalho">
+
+                                <div class="perfil-avatar">
+                                    👤
+                                </div>
+
+                                <div class="perfil-dados">
+
+                                    <p>
+                                        {{ session.get("usuario_nome", "Administrador") }}
+                                    </p>
+
+                                    <p>
+                                        {{ session.get("usuario_email", "admin@gmail.com") }}
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="perfil-linha"></div>
+
+                            <a href="/perfil">
+                                Meu Perfil
+                            </a>
+
+                            <a href="/logout">
+                                Sair
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <section class="top-vendas">
+
+                <h2>
+                    Top de vendas
+                </h2>
+
+                <div class="produtos-top">
+
+                    <div class="produto-card">
+                        <div class="produto-emoji">
+                            📦
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <div class="produto-emoji">
+                            🛒
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <div class="produto-emoji">
+                            📱
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <div class="produto-emoji">
+                            💻
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="area-dados">
+
+                <div class="tabela-card">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Produto
+                                </th>
+
+                                <th>
+                                    Quantidade
+                                </th>
+
+                                <th>
+                                    Valor
+                                </th>
+
+                                <th>
+                                    Data
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Notebook DELL
+                                </td>
+
+                                <td>
+                                    0
+                                </td>
+
+                                <td>
+                                    R$ 4000,00
+                                </td>
+
+                                <td>
+                                    ---
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Mouse Gamer
+                                </td>
+
+                                <td>
+                                    0
+                                </td>
+
+                                <td>
+                                    R$ 200,00
+                                </td>
+
+                                <td>
+                                    ---
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Monitor
+                                </td>
+
+                                <td>
+                                    0
+                                </td>
+
+                                <td>
+                                    R$ 150,00
+                                </td>
+
+                                <td>
+                                    ---
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="cards-info">
+
+                    <div class="info-card">
+
+                        <h3>
+                            Clientes cadastrados
+                        </h3>
+
+                        <strong>
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>
+                            Produtos cadastrados
+                        </h3>
+
+                        <strong>
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>
+                            Estoque baixo
+                        </h3>
+
+                        <strong>
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+        const perfilBtn = document.getElementById("perfilBtn");
+        const perfilMenu = document.getElementById("perfilMenu");
+
+        const notificacaoBtn = document.getElementById("notificacaoBtn");
+        const notificacaoMenu = document.getElementById("notificacaoMenu");
+        const notificacaoLista = document.getElementById("notificacaoLista");
+        const notificacaoContador = document.getElementById("notificacaoContador");
+        const tituloNotificacoes = document.getElementById("tituloNotificacoes");
+
+        perfilBtn.addEventListener("click", function(event) {
+
+            event.stopPropagation();
+
+            perfilMenu.classList.toggle("aberto");
+
+            notificacaoMenu.classList.remove("aberto");
+
+        });
+
+        notificacaoBtn.addEventListener("click", function(event) {
+
+            event.stopPropagation();
+
+            notificacaoMenu.classList.toggle("aberto");
+
+            perfilMenu.classList.remove("aberto");
+
+            carregarNotificacoes();
+
+        });
+
+        tituloNotificacoes.addEventListener("click", function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("click", function(event) {
+
+            if (
+                !perfilMenu.contains(event.target) &&
+                !perfilBtn.contains(event.target)
+            ) {
+                perfilMenu.classList.remove("aberto");
+            }
+
+            if (
+                !notificacaoMenu.contains(event.target) &&
+                !notificacaoBtn.contains(event.target)
+            ) {
+                notificacaoMenu.classList.remove("aberto");
+            }
+
+        });
+
+        async function carregarNotificacoes() {
+
+            try {
+
+                const resposta = await fetch("/notificacoes");
+
+                const notificacoes = await resposta.json();
+
+                notificacaoLista.innerHTML = "";
+
+                notificacaoContador.textContent = notificacoes.length;
+
+                if (notificacoes.length === 0) {
+
+                    const mensagem = document.createElement("a");
+
+                    mensagem.href = "#";
+
+                    mensagem.textContent = "Nenhuma notificação.";
+
+                    mensagem.addEventListener("click", function(event) {
+                        event.preventDefault();
+                    });
+
+                    notificacaoLista.appendChild(mensagem);
+
+                    return;
+                }
+
+                notificacoes.forEach(function(notificacao) {
+
+                    const item = document.createElement("div");
+
+                    const mensagem = document.createElement("a");
+
+                    mensagem.href = "#";
+
+                    mensagem.textContent = notificacao.mensagem;
+
+                    mensagem.addEventListener("click", function(event) {
+                        event.preventDefault();
+                    });
+
+                    const botao = document.createElement("button");
+
+                    botao.type = "button";
+
+                    botao.textContent = "Concluir";
+
+                    botao.addEventListener("click", function() {
+
+                        concluirNotificacao(
+                            notificacao.idnotificacao
+                        );
+
+                    });
+
+                    item.appendChild(mensagem);
+
+                    item.appendChild(botao);
+
+                    notificacaoLista.appendChild(item);
+
+                });
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao carregar notificações:",
+                    erro
+                );
+
+            }
+
+        }
+
+        async function concluirNotificacao(id) {
+
+            try {
+
+                await fetch(
+                    "/notificacoes/concluir/" + id,
+                    {
+                        method: "POST"
+                    }
+                );
+
+                carregarNotificacoes();
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao concluir notificação:",
+                    erro
+                );
+
+            }
+
+        }
+
+        carregarNotificacoes();
+    </script>
+
+</body>
+</html>

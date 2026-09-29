@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="clientes-body">
+    {% include 'sidebar.html' %}
+
+    
+
+    <!-- Conteúdo -->
+    <main class="clientes-container">
+
+        <h1>Lista de Clientes</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for c in clientes %}
+                <tr>
+                    <td>{{ c.idcliente }}</td>
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.email }}</td>
+
+                    <td>
+                        <a class="btn-edit" href="/clientes/editar/{{ c.idcliente }}">
+                            Editar
+                        </a>
+
+                        <a class="btn-delete"
+                           href="/clientes/deletar/{{ c.idcliente }}"
+                           onclick="return confirm('Tem certeza que deseja excluir este cliente?')">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    </main>
+
+</body>
+</html>
